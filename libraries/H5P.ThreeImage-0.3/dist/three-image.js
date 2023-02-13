@@ -10138,7 +10138,7 @@
                 }, i.a.createElement("div", {
                     className: "tooltip",
                     dangerouslySetInnerHTML: {
-                        __html: this.context.extras.l10n.delete
+                        // __html: this.context.extras.l10n.delete
                     }
                 })))
             }
