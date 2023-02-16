@@ -2368,7 +2368,7 @@
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 14vh;
+  /* max-height: 14vh; */
 }
 
 .h5p-interactive-video-endscreen-overview-table::-webkit-scrollbar {
