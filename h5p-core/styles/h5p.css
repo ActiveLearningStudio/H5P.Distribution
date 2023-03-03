@@ -238,7 +238,7 @@ div.h5p-fullscreen {
   content: "\e892";
 }
 .h5p-actions > .h5p-button.h5p-export,.h5p-actions > .h5p-button.h5p-embed {
-  display:none;
+  /* display:none; */
 }
 .h5p-actions .h5p-link {
   float: right;
