@@ -723,6 +723,13 @@
         ]
       },
       {
+        "name": "lockslide",
+        "type": "boolean",
+        "label": "Required to view entire presentation",
+        "description": "Lock Summary Page in interactive Book untill user view complete presentation",
+        "default": false
+      },
+      {
         "name": "summarySlideSolutionButton",
         "type": "boolean",
         "label": "Show \"Show solution\" button in the summary slide",
