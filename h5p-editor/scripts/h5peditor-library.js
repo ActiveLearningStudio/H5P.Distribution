@@ -162,6 +162,7 @@ ns.Library.prototype.appendTo = function ($wrapper) {
   var enableExistingActivityBrowse = function () {
     const blacklist = [
       "H5P.InteractiveBook",
+      "H5P.Agamotto",
     ];
     var librarySelector = ns.findLibraryAncestor(that.parent);
     if (librarySelector.currentLibrary === undefined) 

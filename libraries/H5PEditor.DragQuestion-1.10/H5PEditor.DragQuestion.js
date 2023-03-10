@@ -209,7 +209,8 @@ H5PEditor.widgets.dragQuestion = H5PEditor.DragQuestion = (function ($, DragNBar
       '</div>';
 
     if (this.field.description !== undefined) {
-      html += '<div class="h5peditor-field-description">' + this.field.description + '</div>';
+      //html += '<div class="h5peditor-field-description">' + this.field.description + '</div>';
+      html += '<div class="h5peditor-field-description" style="position: relative;padding: 1.5em 2.2em 2em 2.2em;font-size: 0.9em;margin: 0 0 20px 0;border: 1px solid #ffde78;background-color: #f9f9d8;color: #000;">' + this.field.description + '</div>';
     }
 
     // removes the description field, so it's not re-rendered on top
