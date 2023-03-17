@@ -537,9 +537,14 @@ H5P.VideoVimeo = (function ($) {
    */
   const getId = (url) => {
     // https://stackoverflow.com/a/11660798
-    const matches = url.match(/^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/);
+    /*const matches = url.match(/^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/);
     if (matches && matches[5]) {
       return matches[5];
+    }*/
+    // Cover all regular URLs that people can find
+    const matches = url.match(/(?:http|https)?:?\/?\/?(?:www\.)?(?:player\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/(?:[^\/]*)\/videos\/|video\/|)(\d+)(?:|\/\?)/i);
+    if (matches && matches[1]) {
+      return matches[1];
     }
   };
 
