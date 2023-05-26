@@ -2302,7 +2302,6 @@ H5PEditor.CoursePresentation.prototype.showConfirmationDialog = function (dialog
         var render_context = {
           canvasContext: ctx,
           viewport: viewport,
-          background: 'black',
         };
         canvas.height = viewport.height;
         canvas.width = viewport.width;
@@ -2312,10 +2311,10 @@ H5PEditor.CoursePresentation.prototype.showConfirmationDialog = function (dialog
         renderTask.promise.then(() => {
           // Adding black bars to the side to preserve aspect ratio
           ctx.drawImage(ctx.canvas, 0, 0, canvas.width-blackBarWidth, canvas.height, blackBarWidth, 0, canvas.width-blackBarWidth, canvas.height);
-          ctx.beginPath();
-          ctx.rect(0, 0, blackBarWidth, canvas.height);
           ctx.fillStyle = "black";
-          ctx.fill();
+          ctx.fillRect(0, 0, blackBarWidth, canvas.height);
+          ctx.fillRect(ctx.canvas.width - blackBarWidth, 0, blackBarWidth, canvas.height);
+
           canvas.toBlob((blob) => {
             const formData = new FormData();
             formData.append("contentId", 0);
