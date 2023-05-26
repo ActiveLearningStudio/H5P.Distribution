@@ -780,11 +780,23 @@ H5P.VideoKomodo = (function ($) {
    */
 
   var getId = function (url) {
-    var urlBreak = new URL(url).href.split('/');
-    if (urlBreak[2] == 'komododecks.com') {
-      return urlBreak[4];
-    }
+    if(validateUrl(url)) {
+      var urlBreak = new URL(url).href.split('/');
+      if (urlBreak[2] == 'komododecks.com') {
+        return urlBreak[4];
+      }
+    }else 
+      return false;
   };
+
+  var validateUrl =  function (urlString) {
+    try { 
+      return Boolean(new URL(urlString)); 
+    }
+    catch(e){ 
+      return false; 
+    }
+  }
 
   /**
    * Find source type.
