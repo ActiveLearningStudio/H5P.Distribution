@@ -9,12 +9,6 @@
   "runnable": 0,
   "preloadedJs": [
     {
-      "path": "epub-library/jszip.min.js"
-    },
-    {
-      "path": "epub-library/epub.min.js"
-    },
-    {
       "path": "select-epub-chapter.js"
     }
   ],

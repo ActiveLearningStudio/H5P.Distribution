@@ -20,24 +20,30 @@ H5PEditor.SelectEpubChapter = (function ($) {
       id: 'epub-editor-preview-container'
     });
 
-    self.$epub = $('<div>', {
-      id: 'editor-viewer'
-    });
-
-    var $list = $('<div>', {
-      id: 'toc-view'
-    });
-
-    $epubPreviewContainer.append($list);
-    $epubPreviewContainer.append(self.$epub)
-
     // On Remove epub File
     parent.children[0].confirmRemovalDialog.on('confirmed', function () {
-      self.$epub.html('');
-      $list.html('');
+      $epubPreviewContainer.html('');
     });
 
     parent.children[0].on('uploadComplete', function(uploadComplete) {
+      self.$epub = $('<div>', {
+        id: 'editor-viewer'
+      });
+
+      var $list = $('<div>', {
+        id: 'toc-view'
+      });
+
+      $epubPreviewContainer.append($list);
+      $epubPreviewContainer.append(self.$epub);
+
+
+      if (!parent.hasOwnProperty("parent") || typeof parent.parent === 'undefined') {
+        parent.$form.append($epubPreviewContainer);
+      } else {
+        parent.$myField.append($epubPreviewContainer);
+      }
+
       const url = H5P.getPath(uploadComplete.data.data.path, H5PEditor.contentId)
 
       var book = ePub(url);
@@ -51,11 +57,6 @@ H5PEditor.SelectEpubChapter = (function ($) {
 
       book.loaded.navigation.then(function(toc){
 
-        if (!parent.hasOwnProperty("parent") || typeof parent.parent === 'undefined') {
-          parent.$form.append($epubPreviewContainer);
-        } else {
-          parent.$myField.append($epubPreviewContainer);
-        }
 
         rendition.on('rendered', chapterChange);
 
@@ -102,9 +103,6 @@ H5PEditor.SelectEpubChapter = (function ($) {
         }
 
       });
-
-
-
     });
 
     var generateTocItems = function(toc, level) {

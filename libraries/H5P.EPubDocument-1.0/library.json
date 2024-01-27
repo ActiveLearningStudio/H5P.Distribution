@@ -1,5 +1,5 @@
 {
-  "title": "ePub Dcoument",
+  "title": "ePub Document",
   "description": "Curriki H5P for ePub Document",
   "majorVersion": 1,
   "minorVersion": 0,
@@ -10,7 +10,6 @@
   "license": "",
   "machineName": "H5P.EPubDocument",
   "embedTypes": [
-    "div",
     "iframe"
   ],
   "coreApi": {
@@ -31,6 +30,13 @@
   "preloadedCss": [
     {
       "path": "epub-document.css"
+    }
+  ],
+  "editorDependencies": [
+    {
+      "machineName": "H5PEditor.SelectEpubChapter",
+      "majorVersion": 1,
+      "minorVersion": 0
     }
   ]
 }

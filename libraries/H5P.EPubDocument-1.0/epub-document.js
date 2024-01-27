@@ -12,6 +12,11 @@ var H5P = H5P || {};
     H5P.EventDispatcher.call(this);
     this.extras = extras;
     this.source = H5P.getPath(params.file.path, id);
+
+    if (params.chapter) {
+      this.chapter = params.chapter;
+    }
+
   };
 
   H5P.EPubDocument.prototype = Object.create(H5P.EventDispatcher.prototype);
@@ -35,7 +40,6 @@ var H5P = H5P || {};
 
     self.$epub = $('<div>', {
       id: 'viewer' ,
-      class: 'spread',
       on: {
         load: function () {
           self.trigger('loaded');
@@ -56,7 +60,6 @@ var H5P = H5P || {};
     nextArrow.className = "arrow";
     nextArrow.innerHTML = "›";
 
-
     // Append the elements to the container
     self.$epubContainer.append(prevArrow);
     self.$epubContainer.append(nextArrow);
@@ -66,13 +69,13 @@ var H5P = H5P || {};
     var rendition = book.renderTo(self.$epub[0], {
       width:  900,
       height: 600,
-      spread: "always"
     });
-    var displayed = rendition.display();
+
+    var displayed = self.chapter ? rendition.display(self.chapter) : rendition.display();
     displayed.then(function(renderer){
       self.trigger('resize');
     });
-
+    
     // Navigation loaded
     book.loaded.navigation.then(function(toc){
       console.log(toc);
@@ -112,35 +115,28 @@ var H5P = H5P || {};
     });
 
     rendition.on("relocated", function(location){
-      console.log(location);
-
+      console.log(location.start.location);
       var next = book.package.metadata.direction === "rtl" ? prevArrow : nextArrow;
       var prev = book.package.metadata.direction === "rtl" ? nextArrow : prevArrow;
 
-      if (location.atEnd) {
+      var isEndOfSelectedChapter = location.end.displayed.page === location.end.displayed.total;
+      var isStartOfSelectedChapter = location.start.displayed.page === 1;
+      if (location.atEnd || isEndOfSelectedChapter) {
         next.style.visibility = "hidden";
       } else {
         next.style.visibility = "visible";
       }
 
-      if (location.atStart) {
+      if (location.atStart || isStartOfSelectedChapter) {
         prev.style.visibility = "hidden";
       } else {
         prev.style.visibility = "visible";
       }
+      self.trigger('resize');
 
-    });
-
-    rendition.on("layout", function(layout) {
-      if (layout.spread) {
-        self.$epub.removeClass('single');
-      } else {
-        self.$epub.addClass('single');
-      }
     });
 
     window.addEventListener("unload", function () {
-      console.log("unloading");
       book.destroy();
     });
 
