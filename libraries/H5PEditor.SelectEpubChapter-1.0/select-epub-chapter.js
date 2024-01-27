@@ -51,7 +51,12 @@ H5PEditor.SelectEpubChapter = (function ($) {
 
       book.loaded.navigation.then(function(toc){
 
-        parent.$form.append($epubPreviewContainer);
+        if (!parent.hasOwnProperty("parent") || typeof parent.parent === 'undefined') {
+          parent.$form.append($epubPreviewContainer);
+        } else {
+          parent.$myField.append($epubPreviewContainer);
+        }
+
         rendition.on('rendered', chapterChange);
 
         var tocItems = generateTocItems(toc);
