@@ -1,0 +1,20 @@
+{
+  "machineName": "H5PEditor.SelectEpubChapter",
+  "title": "Select Epub Chapter",
+  "license": "MIT",
+  "author": "fnoks",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 0,
+  "runnable": 0,
+  "preloadedJs": [
+    {
+      "path": "select-epub-chapter.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "select-epub-chapter.css"
+    }
+  ]
+}

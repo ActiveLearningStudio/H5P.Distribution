@@ -1,0 +1,49 @@
+[
+  {
+    "name": "content",
+    "label": "List of Column Content",
+    "importance": "high",
+    "type": "list",
+    "min": 1,
+    "entity": "content",
+    "field": {
+      "name": "content",
+      "type": "group",
+      "fields": [
+        {
+          "name": "content",
+          "type": "library",
+          "importance": "high",
+          "label": "Content",
+          "options": [
+            "H5P.InteractiveVideo 1.24",
+            "H5P.QuestionSet 1.20",
+            "H5P.CoursePresentation 1.24",
+            "H5P.EPubDocument 1.0"
+          ]
+        },
+        {
+          "name": "useSeparator",
+          "type": "select",
+          "importance": "low",
+          "label": "Separate content with a horizontal ruler",
+          "default": "auto",
+          "options": [
+            {
+              "value": "auto",
+              "label": "Automatic (default)"
+            },
+            {
+              "value": "disabled",
+              "label": "Never use ruler above"
+            },
+            {
+              "value": "enabled",
+              "label": "Always use ruler above"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
