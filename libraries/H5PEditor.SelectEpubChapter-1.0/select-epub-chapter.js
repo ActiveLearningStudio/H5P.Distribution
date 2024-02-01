@@ -19,6 +19,13 @@ H5PEditor.SelectEpubChapter = (function ($) {
     var $epubPreviewContainer = $('<div>', {
       id: 'epub-editor-preview-container'
     });
+    self.$epub = $('<div>', {
+      id: 'editor-viewer'
+    });
+
+    var $list = $('<div>', {
+      id: 'toc-view'
+    });
 
     // On Remove epub File
     parent.children[0].confirmRemovalDialog.on('confirmed', function () {
@@ -26,13 +33,6 @@ H5PEditor.SelectEpubChapter = (function ($) {
     });
 
     parent.children[0].on('uploadComplete', function(uploadComplete) {
-      self.$epub = $('<div>', {
-        id: 'editor-viewer'
-      });
-
-      var $list = $('<div>', {
-        id: 'toc-view'
-      });
 
       $epubPreviewContainer.append($list);
       $epubPreviewContainer.append(self.$epub);
@@ -112,7 +112,7 @@ H5PEditor.SelectEpubChapter = (function ($) {
 
       toc.forEach(function(chapter) {
         var listitem = document.createElement("li"),
-            link = document.createElement("a");
+        link = document.createElement("a"),
         toggle = document.createElement("a");
 
         var subitems;
