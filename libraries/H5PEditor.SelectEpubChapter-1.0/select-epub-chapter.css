@@ -1,0 +1,97 @@
+#epub-editor-preview-container {
+  display: flex;
+  flex-direction: row;
+}
+
+#editor-viewer, #toc-view {
+  width: 50%;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+#toc-view {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  min-width: 300px;
+  -webkit-transition: visibility 0 ease .5s;
+  -moz-transition: visibility 0 ease .5s;
+  -ms-transition: visibility 0 ease .5s;
+}
+
+#tocView > ul {
+  margin-top: 15px;
+  margin-bottom: 50px;
+  padding-left: 20px;
+}
+
+#tocView li {
+  margin-bottom:10px;
+  width: 225px;
+  list-style: none;
+}
+
+
+#tocView li:active,
+#tocView li.currentChapter
+{
+  list-style: none;
+}
+
+.list_item a {
+  color: blue;
+  text-decoration: none;
+}
+
+.list_item a.chapter {
+  font-size: 1em;
+}
+
+.list_item a.section {
+  font-size: .8em;
+}
+
+
+.list_item.currentChapter > a {
+  background-color: yellow;
+}
+
+.list_item a:hover {
+  color: orangered;
+}
+
+.list_item ul {
+  padding-left:10px;
+  margin-top: 8px;
+  display: none;
+}
+
+.list_item.currentChapter > ul,
+.list_item.openChapter > ul {
+  display: block;
+}
+
+#tocView.hidden {
+  display: none;
+}
+
+.toc_toggle {
+  display: inline-block;
+  width: 14px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.toc_toggle:before {
+  content: '▸';
+  color: #fff;
+  margin-right: -4px;
+}
+
+.currentChapter > .toc_toggle:before,
+.openChapter > .toc_toggle:before {
+  content: '▾';
+}

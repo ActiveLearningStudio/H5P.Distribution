@@ -1,0 +1,20 @@
+[
+  {
+    "name": "file",
+    "type": "file",
+    "label": "ePub Document(.epub file)",
+    "importance": "high",
+    "disableCopyright": true,
+    "mimes": [
+      "application/epub+zip",
+      "application/zip"
+    ]
+  },
+  {
+    "name": "chapter",
+    "type": "select",
+    "widget": "selectEpubChapter",
+    "label": "Chapter",
+    "importance": "high"
+  }
+]
