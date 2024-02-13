@@ -236,6 +236,12 @@ H5PEditor.MetadataForm = (function (EventDispatcher, $, metadataSemantics) {
     semantics.push(findField('yearFrom'));
     semantics.push(findField('yearTo'));
     semantics.push(findField('source'));
+    semantics.push(findField('royaltyType'));
+    semantics.push(findField('royaltyTermsViews'));
+    semantics.push(findField('amount'));
+    semantics.push(findField('currency'));
+    semantics.push(findField('copyrightNotice'));
+    semantics.push(findField('creditText'));
 
     // Collect readies callbacks
     const readies = [];
