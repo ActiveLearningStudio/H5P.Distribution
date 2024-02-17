@@ -16,7 +16,7 @@
           "importance": "high",
           "label": "Content",
           "options": [
-            "H5P.InteractiveVideo 1.24",
+            "H5P.BrightcoveInteractiveVideo 1.1",
             "H5P.QuestionSet 1.20",
             "H5P.Questionnaire 1.2",
             "H5P.EPubDocument 1.0"
