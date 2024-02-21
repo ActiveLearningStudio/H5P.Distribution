@@ -26,6 +26,20 @@ H5PEditor.widgets.interactiveVideo = H5PEditor.BrightcoveInteractiveVideo = (fun
     this.parent = parent;
     this.field = field;
 
+    var parentActivity = this.findParentRecursive(parent, 'parent');
+    if ( parentActivity != null && parentActivity.currentLibrary && parentActivity.currentLibrary.includes('H5P.EPubColumn')) {
+      $('<button/>', {
+        'class': 'h5p-browse-video-button h5p-joubelui-button',
+        type: 'button',
+        text: 'Browse Video',
+        click: function () {
+          that.handleBrightcoveBrowseVideoEvent(setValue, params, field);
+        },
+        appendTo: parent.$item
+      });
+    }
+
+
     this.resizeId = 'resize.iveditor-' + (counter++);
 
     this.findField(this.field.video, function (field) {
@@ -1795,6 +1809,37 @@ H5PEditor.widgets.interactiveVideo = H5PEditor.BrightcoveInteractiveVideo = (fun
     'H5P.DragText',
     'H5P.TrueFalse'
   ];
+
+  InteractiveVideoEditor.prototype.findParentRecursive = function(object, parentPropertyName) {
+    try {
+      // Attempt to access the parent property
+      var parent = object[parentPropertyName];
+
+      // Base case: Stop when there is no parent property
+      if (!parent) {
+        return object;
+      }
+
+      // Return the parent property
+      return this.findParentRecursive(parent, parentPropertyName);
+    } catch (error) {
+      // Catch any exception and return null
+      return null;
+    }
+  }
+
+  InteractiveVideoEditor.prototype.handleBrightcoveBrowseVideoEvent = function(setValue, params) {
+    const data = {
+      callback: (callBackdata) => {
+        console.log(callBackdata);
+        this.parent.params.video.brightcoveVideoID = callBackdata.brightcoveVideoID
+        this.setActive();
+      }
+    };
+    const event = new CustomEvent('launchBrightcoveBrowseVideosDialog', { detail: data } );
+    window.parent.dispatchEvent(event);
+    return false;
+  }
 
   return InteractiveVideoEditor;
 })(H5P.jQuery);
