@@ -616,7 +616,7 @@ H5P.VideoBrightcove = (function ($) {
       const script = document.createElement('script');
       script.src = "https://players.brightcove.net/" + self.brightcoveUrlParts.dataAccount + "/" + self.brightcoveUrlParts.dataPlayer + "_" + self.brightcoveUrlParts.dataEmbed + "/index.min.js";
       script.async = false;
-      script.crossOrigin = "anonymous";
+      script.crossOrigin = "anonymous"; // fix cors
       document.body.appendChild(script);
     } else {
       console.log("videojs lib found before initializing.");
