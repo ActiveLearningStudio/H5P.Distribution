@@ -19,7 +19,9 @@
             "H5P.BrightcoveInteractiveVideo 1.1",
             "H5P.QuestionSet 1.20",
             "H5P.Questionnaire 1.2",
-            "H5P.EPubDocument 1.0"
+            "H5P.EPubDocument 1.0",
+            "H5P.Image 1.1",
+            "H5P.DocumentsUpload 1.0"
           ]
         },
         {
