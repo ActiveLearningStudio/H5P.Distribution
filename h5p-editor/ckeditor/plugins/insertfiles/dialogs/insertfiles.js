@@ -175,7 +175,7 @@ function moveCursorToEnd(editor) {
  * Loop through each IFrame
  */
 function iframesCheck() {
-  var iframes = $(".cke_wysiwyg_frame").contents().find(".insert-iframe:last-child");
+  var iframes = H5P.jQuery(".cke_wysiwyg_frame").contents().find(".insert-iframe:last-child");
   checkIframeLoaded(iframes[iframes.length - 1]);
 }
 
@@ -187,7 +187,7 @@ function checkIframeLoaded(ele) {
   var count = 0;
   var intervalID = setInterval(function () {
     if (!isIframeLoaded(ele) && count < 3) {
-      var element = $(ele);
+      var element = H5P.jQuery(ele);
       var iframe_url = element.attr("src")
       element.attr("src", iframe_url);
       count++;
