@@ -31,12 +31,11 @@ H5PEditor.widgets.interactiveVideo = H5PEditor.BrightcoveInteractiveVideo = (fun
       $('<button/>', {
         'class': 'h5p-browse-video-button h5p-joubelui-button',
         type: 'button',
-        text: 'Browse Video',
+        text: 'Search clips',
         click: function () {
           that.handleBrightcoveBrowseVideoEvent(setValue, params, field);
         },
-        appendTo: parent.$item
-      });
+      }).insertBefore(parent.$item.find('.h5peditor-panes'));
     }
 
 
