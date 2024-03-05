@@ -52,6 +52,7 @@ H5P.IFrameEmbed = function (options, contentId, contentData) {
         height: options.height,
         display: 'block'
       },
+      crossorigin: 'anonymous'
     });
 
     $wrapper.html('');
@@ -73,7 +74,7 @@ H5P.IFrameEmbed = function (options, contentId, contentData) {
     // is resized, or enters fullscreen.
     if(options.resizeSupported) {
       $iframe.css(
-        (H5P.isFullscreen) ? {width: '100%', height: '100%'} : getElementSize($iframe)
+          (H5P.isFullscreen) ? {width: '100%', height: '100%'} : getElementSize($iframe)
       );
     }
   };
