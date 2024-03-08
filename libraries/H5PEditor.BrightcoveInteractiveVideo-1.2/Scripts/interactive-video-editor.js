@@ -1834,11 +1834,11 @@ H5PEditor.widgets.interactiveVideo = H5PEditor.BrightcoveInteractiveVideo = (fun
         this.parent.params.video.brightcoveVideoID = callBackdata.brightcoveVideoID;
         if (callBackdata.startVideoAt) {
           const startVideoAt = formatTime(callBackdata.startVideoAt);
-          $(this.parent.parent.$myField[0]).find('.field-name-startVideoAt').val(startVideoAt).change();
+          $(this.parent.parent.$myField[0]).find('.field-name-startVideoAt>input').val(startVideoAt).change();
         }
         if (callBackdata.endVideoAt) {
           const endVideoAt = formatTime(callBackdata.endVideoAt);
-          $(this.parent.parent.$myField[0]).find('.field-name-endVideoAt').val(endVideoAt).change();
+          $(this.parent.parent.$myField[0]).find('.field-name-endVideoAt>input').val(endVideoAt).change();
         }
         this.setActive();
       },
