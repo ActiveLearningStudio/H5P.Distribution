@@ -86,7 +86,7 @@ H5PEditor.widgets.interactiveVideo = H5PEditor.BrightcoveInteractiveVideo = (fun
       that.passReadies = false;
 
       // Set active right away to generate common fields for interactions.
-      that.setActive();
+      that.setActive(false);
       var formManagerHeadTags = H5P.jQuery('.h5peditor-form .form-mananger-overlay').siblings('.h5peditor-form-manager-head');
       if (formManagerHeadTags.length > 0) {
         formManagerHeadTags[0].remove();
@@ -282,8 +282,8 @@ H5PEditor.widgets.interactiveVideo = H5PEditor.BrightcoveInteractiveVideo = (fun
   /**
    * Our tab has been set active. Create a new player if necessary.
    */
-  InteractiveVideoEditor.prototype.setActive = function () {
-    if (this.IV !== undefined) {
+  InteractiveVideoEditor.prototype.setActive = function (videoChanged) {
+    if (this.IV !== undefined && !videoChanged) {
       // A video has been loaded, no need to recreate.
       // (but we can do some resizing :D)
       this.IV.trigger('resize');
@@ -1840,7 +1840,7 @@ H5PEditor.widgets.interactiveVideo = H5PEditor.BrightcoveInteractiveVideo = (fun
           const endVideoAt = formatTime(callBackdata.endVideoAt);
           $(this.parent.parent.$myField[0]).find('.field-name-endVideoAt>input').val(endVideoAt).change();
         }
-        this.setActive();
+        this.setActive(true);
       },
       supportStartEndTime: true
     };
